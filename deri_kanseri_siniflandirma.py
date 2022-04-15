@@ -23,12 +23,12 @@ from keras.models import load_model
 
 from sklearn.model_selection import train_test_split
 
-# %% load model
+#  load model
 
 skin_df = pd.read_csv("HAM10000_metadata.csv")
 
 
-# %% Data Cleaning
+# Data Cleaning
 
 skin_df.isnull().sum()
 
@@ -40,7 +40,7 @@ skin_df["age"].fillna((skin_df["age"].mean()), inplace = True)
 
 skin_df.isnull().sum()
 
-# %% EDA
+# EDA
 
 # visualize
 
@@ -57,7 +57,7 @@ skin_df.describe()
 
 plt.show()
 
-# %% preprocess
+# preprocess
 
 data_folder_name = "HAM10000_images_part_1/"
 ext = ".jpg" # extantion
@@ -82,22 +82,22 @@ vasc = 6
 """
 
 skin_df.to_pickle("skin_df.pkl") # save as pickle
-# %% read pickle
+# read pickle
 
 skin_df = pd.read_pickle("skin_df.pkl")
-# %% checking the image size distribution
+# checking the image size distribution
 
 skin_df["image"].map(lambda x: x.shape).value_counts() # (75, 100, 3)    10015
                                                        # Name: image, dtype: int64
       
-# %% standardization
+# standardization
 
 x = np.asarray(skin_df["image"].tolist())
 x_mean = np.mean(x)
 x_std = np.std(x)
 x = (x - x_mean) / x_std
 
-# %% one hot encoding
+# one hot encoding
 
 y = to_categorical(skin_df["dx_id"], num_classes = 7)
 
@@ -105,7 +105,7 @@ y = to_categorical(skin_df["dx_id"], num_classes = 7)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
 
-# %% Set the CNN Model
+# Set the CNN Model
 
 # my CNN architechture is [[Conv2D * 2] -> MaxPool2D -> Dropout] * 2
 
