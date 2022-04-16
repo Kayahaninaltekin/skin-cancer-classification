@@ -107,7 +107,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, rando
 
 # Set the CNN Model
 
-# my CNN architechture is [[Conv2D * 2] -> MaxPool2D -> Dropout] * 2
+# my CNN architechture is [[Conv2D * 2] -> MaxPool2D -> Dropout] * 2 => Flatten => Dense
 
 input_shape = (75,100,3)
 num_classes = 7
