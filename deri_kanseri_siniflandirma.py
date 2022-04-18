@@ -145,4 +145,3 @@ history = model.fit(x = x_train, y = y_train, batch_size = batch_size, epochs = 
 model.save("my_model1.h5")
 
 # loss: 0.3708 - accuracy: 0.8684
-
